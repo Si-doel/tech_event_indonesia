@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'custom_button.dart';
 
-// CUSTOM EVENT CARD
 class EventCard extends StatelessWidget {
   final Map<String, dynamic> event;
   final VoidCallback onDetailPressed;
@@ -100,7 +99,6 @@ class EventCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // JUDUL EVENT
                 Text(
                   event['title'],
                   style: const TextStyle(
@@ -112,7 +110,6 @@ class EventCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // TANGGAL
                 Row(
                   children: [
                     const Icon(
@@ -133,7 +130,6 @@ class EventCard extends StatelessWidget {
 
                 const SizedBox(height: 7),
 
-                // LOKASI
                 Row(
                   children: [
                     const Icon(
@@ -154,7 +150,6 @@ class EventCard extends StatelessWidget {
 
                 const SizedBox(height: 14),
 
-                // STATUS DAN CUSTOM BUTTON
                 Row(
                   children: [
                     const Icon(
@@ -173,8 +168,9 @@ class EventCard extends StatelessWidget {
                       ),
                     ),
 
-                    CustomEventButton(
-                      label: 'Lihat Detail',
+                    CustomButton(
+                      text: 'Lihat Detail',
+                      type: CustomButtonType.primary,
                       onPressed: onDetailPressed,
                     ),
                   ],

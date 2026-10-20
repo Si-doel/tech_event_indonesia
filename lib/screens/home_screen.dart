@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_card.dart';
-import '../widgets/custom_button.dart';
 import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -79,7 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // HEADER APLIKASI
               const Text(
                 'DISCOVER',
                 style: TextStyle(
@@ -110,7 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SizedBox(height: 22),
 
-              // SEARCH BAR
               TextField(
                 controller: _searchController,
                 onChanged: (value) {
@@ -133,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SizedBox(height: 28),
 
-              // EVENT UNGGULAN
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(22),
@@ -189,8 +185,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 18),
 
                     ElevatedButton(
-                      onPressed: () =>
-                          showDetailMessage('Seminar Teknologi AI 2026'),
+                      onPressed: () {
+                        final eventUnggulan = events.first;
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailScreen(
+                              event: eventUnggulan,
+                              namaEvent: eventUnggulan['title'].toString(),
+                              hargaEvent: eventUnggulan['price'].toString(),
+                            ),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: const Color(0xFF6558D3),
@@ -210,7 +218,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SizedBox(height: 28),
 
-              // KATEGORI
               const Text(
                 'Kategori Event',
                 style: TextStyle(
@@ -258,7 +265,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SizedBox(height: 28),
 
-              // DAFTAR EVENT
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -294,7 +300,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailScreen(event: event),
+                        builder: (context) => DetailScreen(
+                          event: event,
+                          namaEvent: event['title'].toString(),
+                          hargaEvent: event['price'].toString(),
+                        ),
                       ),
                     );
                   },
@@ -307,7 +317,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // SEMENTARA: DETAIL AKAN DIBUAT NANTI
   void showDetailMessage(String title) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
