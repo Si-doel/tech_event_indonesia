@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_underscores
 
 import 'package:flutter/material.dart';
+
 import '../widgets/custom_button.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -101,7 +102,7 @@ class DetailScreen extends StatelessWidget {
               width: double.infinity,
               child: CustomButton(
                 text: 'Kembali ke Daftar Event',
-                type: CustomButtonType.primary,
+                type: CustomButtonType.secondary,
                 onPressed: () => Navigator.pop(context),
               ),
             ),
